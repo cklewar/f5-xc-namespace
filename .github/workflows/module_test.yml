@@ -1,4 +1,4 @@
-name: F5XC Namespace module Test
+name: F5XC namespace module
 on: push
 jobs:
   f5-xc-namespace-module-test:
@@ -51,6 +51,11 @@ jobs:
 
       - name: Terraform Plan
         id: plan
+        env:
+          VES_P12_PASSWORD: ${{ secrets.VES_P12_PASSWORD }}
+          TF_VAR_f5xc_api_url: ${{ secrets.f5xc_api_url }}
+          TF_VAR_f5xc_api_p12_file: ${{ secrets.f5xc_api_p12_file }}
+          TF_VAR_f5xc_namespace_name: "f5-xc-test-namespace-01"
         run: terraform plan -no-color
         continue-on-error: false
 
