@@ -23,7 +23,13 @@ jobs:
       #    aws-access-key-id: '${{ secrets.TF_USER_AWS_KEY }}'
       #    aws-secret-access-key: '${{ secrets.TF_USER_AWS_SECRET }}'
       #    aws-region: us-east-2
+      - name: Setup environment
+        id: setup_env
+        run: |
+          cp main.tf.example main.tf
+
       - name: Setup Terraform
+        id: setup_tf
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_wrapper: false
@@ -45,5 +51,10 @@ jobs:
         id: plan
         run: terraform plan -no-color
         continue-on-error: false
+
+      - name: Clenup environment
+        id: cleanup_env
+        run: |
+          cp main.tf.example main.tf
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
