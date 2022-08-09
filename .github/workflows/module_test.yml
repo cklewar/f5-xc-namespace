@@ -11,44 +11,29 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      #- uses: actions/setup-node@v3
-      #  with:
-      #    node-version: '14'
-      #- name: Configure AWS credentials
-      #  uses: aws-actions/configure-aws-credentials@v1
-      #  with:
-      #    aws-access-key-id: '${{ secrets.TF_USER_AWS_KEY }}'
-      #    aws-secret-access-key: '${{ secrets.TF_USER_AWS_SECRET }}'
-      #    aws-region: us-east-2
       - name: Setup environment
         id: setup_env
         run: |
           cp main.tf.example main.tf
-
       - name: Setup Terraform
         id: setup_tf
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_wrapper: false
-
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
-
       - name: Terraform Init
         id: init
         run: terraform init
-
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-
       - name: Terraform Plan
         id: plan
         env:
@@ -58,10 +43,8 @@ jobs:
           TF_VAR_f5xc_namespace_name: "f5-xc-test-namespace-01"
         run: terraform plan -no-color
         continue-on-error: false
-
       - name: Cleanup environment
         id: cleanup_env
         run: |
           rm main.tf
-
       - run: echo "This job's status is ${{ job.status }}."
