@@ -20,7 +20,7 @@ variable "f5xc_api_p12_file" {
 
 module "f5xc_namespace" {
   source              = "./modules/f5xc/namespace"
-  f5xc_api_p12_file   = "./f5-xc-cert/cert/playground.staging.api-creds.p12"
+  f5xc_api_p12_file   = var.f5xc_api_p12_file
   f5xc_api_url        = var.f5xc_api_url
   f5xc_namespace_name = format("%s-namespace-%s", var.project_prefix, var.project_suffix)
 }
