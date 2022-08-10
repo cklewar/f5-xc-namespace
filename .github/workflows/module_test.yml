@@ -12,6 +12,13 @@ jobs:
         with:
           submodules: recursive
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - name: Checkout support repo
+        uses: actions/checkout@v3
+        with:
+          repository: cklewar/f5-xc-test
+          path: cert
+          token: ${{ secrets.PAT_TOKEN }}
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
