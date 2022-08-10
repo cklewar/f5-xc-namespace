@@ -22,6 +22,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/cert
       - name: Setup environment
         id: setup_env
         run: |
