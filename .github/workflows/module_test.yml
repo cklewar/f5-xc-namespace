@@ -39,6 +39,8 @@ jobs:
         continue-on-error: true
       - name: Terraform Init
         id: init
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
         run: terraform init
       - name: Terraform Validate
         id: validate
