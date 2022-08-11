@@ -68,7 +68,7 @@ jobs:
           ls -la ${{ github.workspace }}
       - name: List files in the cert repository
         run: |
-        ls -la ${{ github.workspace }}/f5-xc-cert
+          ls -la ${{ github.workspace }}/f5-xc-cert
       - name: Setup environment
         id: setup_env
         run: |
