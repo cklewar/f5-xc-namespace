@@ -1,5 +1,13 @@
 terraform {
-  required_version = ">= 1.2.5"
+  required_version = ">= 1.2.7"
+  cloud {
+    organization = "cklewar-f5-xc-modules"
+    hostname     = "app.terraform.io"
+
+    workspaces {
+      tags = ["networking", "source:cli"]
+    }
+  }
 
   required_providers {
     volterra = {
