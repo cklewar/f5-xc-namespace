@@ -1,8 +1,15 @@
 name: F5XC namespace module
 on: push
 jobs:
+  f5-xc-namespace-module-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
   f5-xc-namespace-module-plan:
     runs-on: ubuntu-latest
+    needs: [f5-xc-namespace-module-validate]
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
@@ -58,6 +65,7 @@ jobs:
       - run: echo "This job's status is ${{ job.status }}."
   f5-xc-namespace-module-apply:
     runs-on: ubuntu-latest
+    needs: [f5-xc-namespace-module-plan]
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
