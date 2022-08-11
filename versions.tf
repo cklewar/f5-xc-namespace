@@ -1,11 +1,11 @@
 terraform {
   required_version = ">= 1.2.7"
   cloud {
-    organization = "cklewar-f5-xc-modules"
+    organization = "cklewar"
     hostname     = "app.terraform.io"
 
     workspaces {
-      tags = ["networking", "source:cli"]
+      name = "f5-xc-modules"
     }
   }
 
