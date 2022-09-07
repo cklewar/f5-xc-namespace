@@ -5,14 +5,14 @@ terraform {
     hostname     = "app.terraform.io"
 
     workspaces {
-      name = "f5-xc-modules"
+      name = "f5-xc-namespace"
     }
   }
 
   required_providers {
     volterra = {
       source  = "volterraedge/volterra"
-      version = ">= 0.11.11"
+      version = ">= 0.11.12"
     }
 
     local = ">= 2.2.3"
