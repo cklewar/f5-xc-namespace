@@ -1,4 +1,4 @@
-# F5-XC-AWS-NAMESPACE
+# F5-XC-NAMESPACE
 
 This repository consists of Terraform templates to bring create a F5XC namespace.
 
