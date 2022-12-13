@@ -1,4 +1,4 @@
-name: F5XC namespace module
+name: F5XC Namespace module
 on: workflow_dispatch
 jobs:
   f5-xc-namespace-module-validate:
