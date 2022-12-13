@@ -45,7 +45,7 @@ jobs:
       id: init
       env:
         TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-      run: terraform init
+      run: terraform init -upgrade
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
