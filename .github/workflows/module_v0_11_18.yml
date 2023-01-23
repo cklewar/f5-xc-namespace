@@ -49,7 +49,7 @@ jobs:
         run: terraform validate -no-color
   namespace-module-plan:
     runs-on: ubuntu-latest
-    needs: [Namespace-module-validate]
+    needs: [namespace-module-validate]
     steps:
       - run: echo "The job was automatically triggered by a ${{github.event_name}} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
@@ -108,7 +108,7 @@ jobs:
       - run: echo "This job's status is ${{ job.status }}."
   namespace-module-apply:
     runs-on: ubuntu-latest
-    needs: [Namespace-module-plan]
+    needs: [namespace-module-plan]
     steps:
       - run: echo "The job was automatically triggered by a ${{github.event_name}} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
@@ -167,7 +167,7 @@ jobs:
       - run: echo "This job's status is ${{ job.status }}."
   namespace-module-destroy:
     runs-on: ubuntu-latest
-    needs: [Namespace-module-apply]
+    needs: [namespace-module-apply]
     steps:
       - run: echo "The job was automatically triggered by a ${{github.event_name}} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
